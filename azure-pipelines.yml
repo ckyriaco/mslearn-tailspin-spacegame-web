@@ -9,8 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-18.04'
   demands:
-  - npm
-- Azure Pipelines is a cloud service t
+    - npm
 
 variables:
   buildConfiguration: 'Release'
@@ -21,15 +20,13 @@ steps:
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
   inputs:
-    packageType: sdk
-     version: '$(dotnetSdkVersion)'
+    version: '$(dotnetSdkVersion)'
 
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
     verbose: false
 
-- 
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
   displayName: 'Compile Sass assets'
 
